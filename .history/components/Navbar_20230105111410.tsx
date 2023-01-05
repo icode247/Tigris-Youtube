@@ -324,7 +324,7 @@ export default function PrimarySearchAppBar({ createHandler, searchQuery, hasSes
                   value={video}
                 />
                 <Button variant="outlined" onClick={() => createHandler(name, url, video)}>Create</Button>
-               {fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}>{fetchStatus}</Alert>}
+               {fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}>{}</Alert>}
               </>
               :
               <Account handleSignUp={handleSignUp} handleSignIn={handleSignIn} fetchStatus={fetchStatus}/>
