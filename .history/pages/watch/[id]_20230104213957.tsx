@@ -9,8 +9,8 @@ export default function Player() {
     const createHandler = () => {
         return null
     }
-    type FetchStatus = "loading" | "success" | "error"| false;
-    const [fetchStatus, setFetchStatus] = useState<FetchStatus>(false);
+    type FetchStatus = "loading" | "success" | "error";
+    const [fetchStatus, setFetchStatus] = useState<FetchStatus>("success");
     const [session, setSession] = useState(false)
     const router = useRouter()
     const { id } = router.query
@@ -26,7 +26,7 @@ export default function Player() {
     useEffect(() => getVideo(id as string),[id])
     return (
         <>
-            <PrimarySearchAppBar createHandler={createHandler} searchQuery={createHandler} hasSession={false} setSession={setSession} handleSignIn={createHandler} handleSignUp={createHandler} fetchStatus={fetchStatus}/>
+            <PrimarySearchAppBar createHandler={createHandler} searchQuery={createHandler} hasSession={false} setSession={setSession} handleSignIn={createHandler} handleSignUp={createHandler}/>
             <Container>
                 <div>
                     <video src={activeVideo?.video} controls={true} style={{ width: "100%" }}></video>

@@ -10,7 +10,7 @@ export default function Player() {
         return null
     }
     type FetchStatus = "loading" | "success" | "error"| false;
-    const [fetchStatus, setFetchStatus] = useState<FetchStatus>(false);
+    const [fetchStatus, setFetchStatus] = useState<FetchStatus>();
     const [session, setSession] = useState(false)
     const router = useRouter()
     const { id } = router.query
