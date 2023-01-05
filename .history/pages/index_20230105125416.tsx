@@ -55,7 +55,7 @@ const Home: NextPage<Props> = ({ videos }) => {
         name,
         video,
         cover: url,
-        user: name,
+        user: ",
 
       })
     })
