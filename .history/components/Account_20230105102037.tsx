@@ -7,7 +7,7 @@ import Alert from '@mui/material/Alert';
 const style = {
     position: 'absolute',
     top: '50%',
-    left: '50%',
+    left: '50%','@mui/material/Box';
     transform: 'translate(-50%, -50%)',
     width: "25ch",
     bgcolor: 'white',
@@ -20,9 +20,9 @@ const style = {
 type Props = {
     handleSignUp: (name: string, email: string, password: string) => void,
     handleSignIn: (email: string, password: string) => void,
-    fetchStatus: 'error'|'loading'|'success'| false,
+
 };
-export default function Account({ handleSignUp, handleSignIn, fetchStatus }: Props) {
+export default function Account({ handleSignUp, handleSignIn }: Props) {
     const [name, setName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('')
@@ -79,7 +79,7 @@ export default function Account({ handleSignUp, handleSignIn, fetchStatus }: Pro
                 </>
             }
             <Button variant="outlined" onClick={() => !isLogin ? handleSignUp(name, email, password) : handleSignIn(email,password)}>{isLogin ? "Login" : "Signup"}</Button>
-            { fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}>{fetchStatus}</Alert>}  
-        </Box>
+            <Alert severity="error">Error</Alert>
+        </Box><Alert severity="error">Error</Alert>
     )
 } 

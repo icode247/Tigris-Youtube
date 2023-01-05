@@ -15,14 +15,14 @@ type Props = {
   videos: Array<VideoModel>;
 };
 
-type FetchStatus = "loading" | "success" | "error" | false;
+type FetchStatus = "loading" | "success" | "error";
 type VideoViewMode = "list" | "search";
 
 const Home: NextPage<Props> = ({ videos }) => {
 
   const [videoList, setVideoList] = useState<VideoModel[]>(videos);
 
-  const [fetchStatus, setFetchStatus] = useState<FetchStatus>(false);
+  const [fetchStatus, setFetchStatus] = useState<FetchStatus>("success");
 
   const [viewMode, setViewMode] = useState<VideoViewMode>("list");
   const [hasSession, setSession] = useState(false);
@@ -119,6 +119,28 @@ const Home: NextPage<Props> = ({ videos }) => {
         setFetchStatus("error");
       });
   }
+  // const setHasError = (hasError: boolean) => {
+  //   setWiggleError(hasError);
+  //   if (hasError) {
+  //     setTimeout(() => {
+  //       setWiggleError(false);
+  //     }, 500);
+  //   }
+  // };
+
+  // Util search query/input check
+  /*
+  This is a helper util method, that validates the input field via a regex and returns a true or false.
+  This also wiggles the text input if the regex doesn't find any match.
+  */
+  // const queryCheckWiggle = () => {
+  //   const result: RegExpMatchArray | null = textInput.match("^\\S.{0,100}$");
+  //   if (result === null) {
+  //     setHasError(true);
+  //     return true;
+  //   }
+  //   return false;
+  // };
 
   return (
     <div>
@@ -128,7 +150,7 @@ const Home: NextPage<Props> = ({ videos }) => {
       </Head>
 
       <div>
-        <PrimarySearchAppBar createHandler={createHandler} searchQuery={searchQuery} hasSession={hasSession} setSession={setSession} handleSignUp={handleSignUp} handleSignIn={handleSignIn} fetchStatus={fetchStatus}/>
+        <PrimarySearchAppBar createHandler={createHandler} searchQuery={searchQuery} hasSession={hasSession} setSession={setSession} handleSignUp={handleSignUp} handleSignIn={handleSignIn}/>
         <Container maxWidth="lg" sx={{ mt: 4 }}>
           <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} >
             {videoList && videoList.map((data: any) => <Video video={data} />)}
@@ -139,5 +161,13 @@ const Home: NextPage<Props> = ({ videos }) => {
   );
 }
 
+// export const getServerSideProps: GetServerSideProps = async () => {
+//   const videosCollection = tigrisDB.getCollection<VideoModel>(VideoModel);
+//   const cursor = videosCollection.findMany();
+//   const videos = await cursor.toArray();
+//   return {
+//     props: { videos },
+//   };
+// };
 
 export default Home;

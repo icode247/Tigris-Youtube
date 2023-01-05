@@ -20,7 +20,7 @@ const style = {
 type Props = {
     handleSignUp: (name: string, email: string, password: string) => void,
     handleSignIn: (email: string, password: string) => void,
-    fetchStatus: 'error'|'loading'|'success'| false,
+    fetchStatus: 'error'|'loading'|'success',
 };
 export default function Account({ handleSignUp, handleSignIn, fetchStatus }: Props) {
     const [name, setName] = useState<string>('');

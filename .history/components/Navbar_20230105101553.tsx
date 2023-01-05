@@ -85,11 +85,9 @@ type Props = {
   setSession: React.Dispatch<React.SetStateAction<boolean>>
   handleSignUp: (name: string, email: string, password: string) => void,
   handleSignIn: (email: string, password: string) => void,
-  fetchStatus : "loading" | "success" | "error"| false;
-  
 };
 
-export default function PrimarySearchAppBar({ createHandler, searchQuery, hasSession, handleSignUp, handleSignIn, fetchStatus }: Props) {
+export default function PrimarySearchAppBar({ createHandler, searchQuery, hasSession, handleSignUp, handleSignIn }: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -324,12 +322,11 @@ export default function PrimarySearchAppBar({ createHandler, searchQuery, hasSes
                   value={video}
                 />
                 <Button variant="outlined" onClick={() => createHandler(name, url, video)}>Create</Button>
-               {fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}></Alert>}
               </>
               :
-              <Account handleSignUp={handleSignUp} handleSignIn={handleSignIn} fetchStatus={fetchStatus}/>
+              <Account handleSignUp={handleSignUp} handleSignIn={handleSignIn}/>
              }
-             
+             <Alert severity="error">This is an error alert — check it out!</Alert>
             </Box>
           </Fade>
         </Modal>

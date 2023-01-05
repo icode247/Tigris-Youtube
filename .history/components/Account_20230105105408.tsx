@@ -78,8 +78,9 @@ export default function Account({ handleSignUp, handleSignIn, fetchStatus }: Pro
                     />
                 </>
             }
+            <Consol></Consol>
             <Button variant="outlined" onClick={() => !isLogin ? handleSignUp(name, email, password) : handleSignIn(email,password)}>{isLogin ? "Login" : "Signup"}</Button>
-            { fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}>{fetchStatus}</Alert>}  
+            { fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}>{fetchStatus ==='error' ? "error":"success"}</Alert>}  
         </Box>
     )
 } 

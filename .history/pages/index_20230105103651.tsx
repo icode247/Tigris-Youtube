@@ -15,14 +15,14 @@ type Props = {
   videos: Array<VideoModel>;
 };
 
-type FetchStatus = "loading" | "success" | "error" | false;
+type FetchStatus = "loading" | "success" | "error";
 type VideoViewMode = "list" | "search";
 
 const Home: NextPage<Props> = ({ videos }) => {
 
   const [videoList, setVideoList] = useState<VideoModel[]>(videos);
 
-  const [fetchStatus, setFetchStatus] = useState<FetchStatus>(false);
+  const [fetchStatus, setFetchStatus] = useState<FetchStatus>("");
 
   const [viewMode, setViewMode] = useState<VideoViewMode>("list");
   const [hasSession, setSession] = useState(false);

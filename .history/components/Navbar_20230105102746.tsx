@@ -85,7 +85,7 @@ type Props = {
   setSession: React.Dispatch<React.SetStateAction<boolean>>
   handleSignUp: (name: string, email: string, password: string) => void,
   handleSignIn: (email: string, password: string) => void,
-  fetchStatus : "loading" | "success" | "error"| false;
+  fetchStatus : "loading" | "success" | "error";
   
 };
 
@@ -324,7 +324,7 @@ export default function PrimarySearchAppBar({ createHandler, searchQuery, hasSes
                   value={video}
                 />
                 <Button variant="outlined" onClick={() => createHandler(name, url, video)}>Create</Button>
-               {fetchStatus && <Alert severity={fetchStatus =='error' ? "error":"success"} sx={{mt:2}}></Alert>}
+                <Alert severity={fetchStatus =="" ? "error":""}>Error</Alert>
               </>
               :
               <Account handleSignUp={handleSignUp} handleSignIn={handleSignIn} fetchStatus={fetchStatus}/>
